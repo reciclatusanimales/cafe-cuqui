@@ -116,7 +116,8 @@ textarea.form-control {
 /* Site Menu*/
 .site-menu {
   display: none;
-  background: black;
+  background-image: url('../img/menu-background.jpg');;
+  background-size: cover;
   left: 0;
   right: 0;
   bottom: 0;
@@ -164,6 +165,7 @@ textarea.form-control {
 
 .site-menu ul > li a {
   color: #fff;
+  font-weight: 500;
   font-size: 30px;
 }
 
@@ -179,8 +181,8 @@ textarea.form-control {
 .site-header .site-logo {
   line-height: 0;
   padding: 10px 20px;
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid #fafeff;
+  color: #fafeff;
   font-size: 30px;
 }
 
@@ -217,7 +219,7 @@ textarea.form-control {
 }
 
 .site-header.scrolled .social li a {
-  color: #000;
+  color: #97cdd3;
 }
 
 .site-header.scrolled .site-logo {
@@ -225,8 +227,9 @@ textarea.form-control {
   display: inline-block;
   position: relative;
   padding: 10px 20px;
-  border: 2px solid #000;
-  color: #000;
+  border: 2px solid #97cdd3;
+  color: #97cdd3;
+  font-weight: 500;
   font-size: 30px;
 }
 
@@ -235,7 +238,7 @@ textarea.form-control {
 }
 
 .site-header.scrolled .site-nav-toggle i, .site-header.scrolled .site-nav-toggle i:before, .site-header.scrolled .site-nav-toggle i:after {
-  background: #000;
+  background: #97cdd3;
 }
 
 .site-header.awake {
@@ -275,11 +278,17 @@ textarea.form-control {
 
 .half .text {
   padding: 7%;
-  background: #000;
+  background-image: url('../img/back.jpg');
 }
 
 .half .text h2 {
   color: #fff;
+}
+
+.half .text p {
+  color: #fff;
+  font-size: 13px;
+  opacity: .5;
 }
 
 @media (max-width: 991px) {
@@ -554,14 +563,15 @@ textarea.form-control {
   display: inline-block;
   position: relative;
   margin-bottom: 30px;
-  background: #fdb44b;
+  background-image: url('../img/back-icon.jpg');
+  
 }
 
 .feature-icon .icon > span {
   color: #000;
   font-size: 40px;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -1114,7 +1124,8 @@ textarea.form-control {
 
 .menus .item .text {
   padding: 40px;
-  background: #000;
+  background-image: url('../img/back.jpg');
+  margin-bottom: 0 !important;
 }
 
 .menus .item .text h3 {
