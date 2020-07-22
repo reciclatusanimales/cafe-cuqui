@@ -4,11 +4,11 @@ html {
 
 body {
   background: #fff;
-  font-family: "Open Sans", cursive;
+  font-family: 'Noto Sans JP', sans-serif;
   font-size: 16px;
   line-height: 1.8;
   font-weight: 300;
-  color: #999999;
+  color: #888888;
 }
 
 a {
@@ -23,12 +23,12 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5 {
-  color: #000;
-  font-family: "Playfair Display", Arial, sans-serif;
+  color: #333333;
+  font-family: 'Enriqueta', serif;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a {
-  color: #000;
+  color: #333333;
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
@@ -59,8 +59,9 @@ textarea.form-control {
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
-  border-color: #fec97d;
-  background: #fec97d;
+  border-color: #ffa11e;
+  background: #ffa11e;
+  opacity: 0.7;
 }
 
 .btn.btn-sm {
@@ -69,7 +70,8 @@ textarea.form-control {
 
 .btn.btn-outline-primary {
   border-width: 2px;
-  color: #fdb44b;
+  color: #ffa11e;
+  border-color: #ffa11e;
 }
 
 .btn.btn-outline-primary:hover, .btn.btn-outline-primary:focus, .btn.btn-outline-primary:active {
@@ -84,7 +86,7 @@ textarea.form-control {
 
 .btn.btn-outline-white:hover, .btn.btn-outline-white:focus {
   background: #fff;
-  color: #000;
+  color: #333333;
   border-width: 2px;
 }
 
@@ -116,7 +118,8 @@ textarea.form-control {
 /* Site Menu*/
 .site-menu {
   display: none;
-  background-image: url('../img/menu-background.jpg');;
+  background-image: url('../img/degree1.png');
+  background-color: #8dc0c7;
   background-size: cover;
   left: 0;
   right: 0;
@@ -182,8 +185,11 @@ textarea.form-control {
   line-height: 0;
   padding: 10px 20px;
   border: 2px solid #fafeff;
+  border-radius: 7%;
   color: #fafeff;
-  font-size: 30px;
+  font-family: 'Neucha', cursive;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .site-header .social li {
@@ -279,6 +285,7 @@ textarea.form-control {
 .half .text {
   padding: 7%;
   background-image: url('../img/back.jpg');
+  opacity: 0.9;
 }
 
 .half .text h2 {
@@ -288,7 +295,10 @@ textarea.form-control {
 .half .text p {
   color: #fff;
   font-size: 13px;
-  opacity: .5;
+}
+
+.half-text {
+  opacity: 0.6;
 }
 
 @media (max-width: 991px) {
@@ -392,18 +402,71 @@ textarea.form-control {
   background: url("../img/curve_line.svg") repeat-x bottom left;
 }
 
+.pre-site-footer {
+  height: 100px;
+  background: url('../img/degree1.png');
+}
+
+.wave-top {
+  background: url('../img/degree1.png');
+  background-color: #8dc0c7;
+  height: 50px;
+  color: #fff;
+  padding: 8px;
+  padding-bottom: 25px; /*h*/
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-top:before,
+.wave-top:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 25px; /*h/2*/
+  height: 50px; /*h*/
+  background: radial-gradient(closest-side, #fff, #fff 50%, transparent 50%);
+  /*or farthest-side*/
+  background-size: 50px 50px; /*h h*/
+  background-position: 0 25px; /*0 h/2*/
+  background-repeat: repeat-x;
+  transform: rotate(180deg);  
+}
+
+.wave-top:before {
+  background: radial-gradient(
+    closest-side,
+    transparent,
+    transparent 50%,
+    #fff 50%
+  );
+  /*or farthest-side*/
+  background-size: 50px 50px; /*h h*/
+  background-position: 25px -25px; /*h/2 -h/2*/
+  background-repeat: repeat-x;
+  top: -25px;
+  transform: rotate(180deg);  
+}
+
+
+
 .site-footer {
-  background: url("../img/curve_line.svg") repeat-x top left;
-  padding: 7em 0;
+  background-image: url('../img/degree1.png');
+  background-color: #8dc0c7;
+  padding-bottom: 2em;
+  color: #fff;
 }
 
 .site-footer .footer-widget h3 {
+  color: #fff;
   font-size: 18px;
   margin-bottom: 20px;
 }
 
 .site-footer .footer-widget p {
-  margin-bottom: 30px;
+  opacity: 0.7;
+  margin-bottom: 20px;
 }
 
 .site-footer .footer-widget ul {
@@ -416,13 +479,16 @@ textarea.form-control {
 }
 
 .site-footer-copyright {
-  background: #000;
+  color: #fff;
+  background-image: url('../img/degree1.png');
+  background-color: #8dc0c7;
   padding: 2em 0;
   text-align: center;
 }
 
 .site-footer-copyright p {
-  font-size: 14px;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 30px;
 }
 
 .site-footer-copyright p:last-child {
@@ -460,7 +526,7 @@ textarea.form-control {
 }
 
 .menu-food-item .price strong {
-  color: #fdb44b;
+  color: #ffa11e;
   font-size: 20px;
 }
 
@@ -469,7 +535,7 @@ textarea.form-control {
 }
 
 .menu-food-item h3 a {
-  color: #000;
+  color: #333333;
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
@@ -489,7 +555,7 @@ textarea.form-control {
 
 .footer-contact-widget .contact-phone {
   font-size: 30px;
-  color: #000;
+  color: #333333;
 }
 
 .lead {
@@ -498,7 +564,7 @@ textarea.form-control {
 
 .testimonial p {
   font-size: 20px;
-  color: #000;
+  color: #333333;
 }
 
 .testimonial .author {
@@ -563,12 +629,11 @@ textarea.form-control {
   display: inline-block;
   position: relative;
   margin-bottom: 30px;
-  background-image: url('../img/back-icon.jpg');
-  
+  background-image: url('../img/back-icon.jpg');  
 }
 
 .feature-icon .icon > span {
-  color: #000;
+  color: #888888;
   font-size: 40px;
   position: absolute;
   top: 55%;
@@ -1055,6 +1120,7 @@ textarea.form-control {
 
 .cover_1 .heading {
   color: white;
+  font-family: 'Reenie Beanie', cursive;
   font-weight: 300;
   font-size: 30px;
   line-height: 1.5;
@@ -1062,7 +1128,7 @@ textarea.form-control {
 
 @media (min-width: 768px) {
   .cover_1 .heading {
-    font-size: 50px;
+    font-size: 60px;
     line-height: 1.5;
   }
 }
@@ -1125,6 +1191,7 @@ textarea.form-control {
 .menus .item .text {
   padding: 40px;
   background-image: url('../img/back.jpg');
+  opacity: 0.9;
   margin-bottom: 0 !important;
 }
 
@@ -1137,12 +1204,12 @@ textarea.form-control {
 .menus .item .text p {
   color: #fff;
   font-size: 13px;
-  opacity: .5;
+  opacity: 0.6;
 }
 
 .menus .item .text .price {
   font-size: 30px;
-  color: #fdb44b;
+  color: #ffa11e;
   opacity: 1;
 }
 
@@ -1211,7 +1278,7 @@ textarea.form-control {
 }
 
 .accordion .btn-block[aria-expanded="false"] {
-  color: #000;
+  color: #333333;
 }
 
 .accordion .btn-block[aria-expanded="false"] .icon:before {
@@ -1244,13 +1311,13 @@ textarea.form-control {
   margin-bottom: 7px;
   margin-right: 4px;
   border-radius: 4px;
-  color: #000;
+  color: #333333;
   border: 1px solid #ccc;
   font-size: 11px;
 }
 
 .tagcloud a:hover {
-  border: 1px solid #000;
+  border: 1px solid #333333;
 }
 
 .comment-form-wrap {
@@ -1307,7 +1374,7 @@ textarea.form-control {
 .comment-list li .comment-body .reply {
   padding: 5px 10px;
   background: #e6e6e6;
-  color: #000;
+  color: #333333;
   text-transform: uppercase;
   font-size: 11px;
   letter-spacing: .1em;
@@ -1386,7 +1453,7 @@ textarea.form-control {
 }
 
 .categories li.active a, .sidelink li.active a {
-  color: #000;
+  color: #333333;
   font-style: italic;
 }
 
@@ -1408,7 +1475,7 @@ textarea.form-control {
   -webkit-transition: opacity .2s ease-out, visibility 0s linear .2s;
   -o-transition: opacity .2s ease-out, visibility 0s linear .2s;
   transition: opacity .2s ease-out, visibility 0s linear .2s;
-  z-index: 1000;
+  z-index: 1333333;
 }
 
 #loader.fullscreen {
