@@ -1,5 +1,5 @@
 AOS.init({
-  duration: 450
+  duration: 350
 });
   
 
@@ -81,7 +81,7 @@ AOS.init({
       
       setTimeout(function() {
         $('.site-menu').fadeOut(400);
-      }, 800);
+      }, 400);
 
       $('body').removeClass('menu-open');
     } else {
@@ -97,7 +97,7 @@ AOS.init({
           }, i * 100);
 
         });
-      }, 500);
+      }, 300);
       
     }
 
