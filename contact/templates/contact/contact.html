@@ -30,13 +30,13 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-md-10 p-5 form-wrap">
-          <form method="POST">
+          <form method="POST" novalidate>
 
             {% csrf_token %}
 
             {{ form | crispy }}
 
-            <button class="btn btn-primary">Enviar</button>
+            <button id="send" class="btn btn-primary">Enviar</button>
 
           </form>
         </div>
@@ -48,3 +48,91 @@
 </div>
 
 {% endblock body %}
+
+
+{% block extra_scripts %}
+
+<script>
+	
+	(function() {
+
+    const send_email_url = "{% url 'contact:send_email' %}"
+    const send_btn = document.getElementById("send");
+
+    send_btn.addEventListener("click", function(event) {
+      event.preventDefault()
+
+      // TODO: spinner
+			
+      const name_input = document.getElementById("id_name")
+      const name = name_input.value
+
+      const email_input = document.getElementById("id_email")
+      const email = email_input.value
+      const labelEmail = document.querySelector("label[for=id_email]");
+
+      const subject_input = document.getElementById("id_subject")
+      const subject = subject_input.value
+      const labelSubject = document.querySelector("label[for=id_subject]");
+
+      const content_input = document.getElementById("id_content")
+      const content = content_input.value
+      const labelContent = document.querySelector("label[for=id_content]");
+      
+
+      if(email === ""){
+        labelEmail.classList.add("text-error");
+      }else{
+        labelEmail.classList.remove("text-error");
+      }
+      if(subject === ""){
+        labelSubject.classList.add("text-error");        
+      }else{
+        labelSubject.classList.remove("text-error");
+      }
+      if(content === ""){
+        labelContent.classList.add("text-error");
+      }else{
+        labelContent.classList.remove("text-error");
+      }
+
+      if(email && subject && content){
+        fetch(send_email_url, {
+          credentials: 'include',
+          method: 'POST',
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name, 
+            email,
+            subject,
+            content
+          })
+        }).then(
+          response => response.json()
+        ).then(function(data) {
+          if(data.success){
+            console.log("OK")
+            name_input.value = ""
+            email_input.value = ""
+            subject_input.value = ""
+            content_input.value = ""
+
+            // TODO: success message
+          }else{
+            console.log("NOTOK")
+            // TODO: success message
+          }          
+        })      
+      }
+
+		})
+
+  })()
+	
+</script>
+
+{% endblock extra_scripts %}

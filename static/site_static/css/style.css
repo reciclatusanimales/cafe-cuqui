@@ -1566,3 +1566,11 @@ textarea.form-control {
 .meal_img{
   width: 100% !important;
 }
+
+.input-error {
+  border: 1px solid red;
+}
+
+.text-error {
+  color: #f06d61;
+}

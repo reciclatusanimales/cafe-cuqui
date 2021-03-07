@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import contact, success
+from .views import contact, send_email
 
 app_name = 'contact'
 
 urlpatterns = [
     path('', contact, name='contact'),
-    path('success/', success, name='success'),
+    path('send-email/', send_email, name='send_email'),
 ]
