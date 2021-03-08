@@ -1568,9 +1568,9 @@ textarea.form-control {
 }
 
 .input-error {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
 
 .text-error {
-  color: #f06d61;
+  color: #f06d61 !important;
 }

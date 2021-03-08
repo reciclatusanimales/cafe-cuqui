@@ -101,10 +101,10 @@
 
                   <h3>Suscríbete</h3>
                   <p>Recibe noticias, eventos y novedades cuquis.</p>
-                  <form action="" class="form-subscribe mb-2">
+                  <form novalidate class="form-subscribe mb-2">
                     <div class="form-group form-field">
-                      <input type="submit" value="Enviar" class="btn btn-primary">
-                      <input type="text" class="form-control" placeholder="Email">
+                      <input type="submit" id="newsletter_btn" value="Enviar" class="btn btn-primary">
+                      <input type="text" id="newsletter_email" name="newsletter_email" class="form-control" placeholder="Email">
                     </div>
                   </form>
 
@@ -165,6 +165,54 @@
         }
         return cookieValue;
       }
+
+      (function() {
+
+        const subscribe_newsletter_url = "{% url 'contact:subscribe_newsletter' %}"
+        const newsletter_btn = document.getElementById("newsletter_btn");
+
+        newsletter_btn.addEventListener("click", function(event) {
+            event.preventDefault()
+
+            // TODO: spinner
+
+            const email_input = document.getElementById("newsletter_email")
+            const email = email_input.value
+
+            if(email === ""){
+                email_input.classList.add("input-error");
+            }else{
+                email_input.classList.remove("input-error");
+            }
+            
+            if(email){
+                fetch(subscribe_newsletter_url, {
+                    credentials: 'include',
+                    method: 'POST',
+                    headers: {
+                        "X-CSRFToken": getCookie("csrftoken"),
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email
+                    })
+                }).then(
+                    response => response.json()
+                ).then(function(data) {
+                    if(data.success){
+                        console.log("OK")
+                        email_input.value = ""
+
+                        // TODO: success message
+                    }else{
+                        console.log("NOTOK")
+                        // TODO: success message
+                    }          
+                })      
+            }
+        })
+      })()
     </script>
 
     {% block extra_scripts %}{% endblock extra_scripts %}
