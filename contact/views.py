@@ -6,6 +6,9 @@ import requests
 import time
 import json
 from .constants import contact_template_slug, newsletter_template_slug, email_sender_url, email_sender_api_key
+import urllib3
+
+http = urllib3.PoolManager()
 
 def contact(request):
     form = ContactForm
@@ -36,10 +39,15 @@ def send_email(request):
     attempt_num = 0
     while attempt_num < 1:       
         body = {'name': name, 'from': email, 'subject': subject, 'content': content, 'template_slug': contact_template_slug, 'type': 'contact'}
-        headers = {'api-key': email_sender_api_key}
-        response = requests.post(email_sender_url, data = json.dumps(body), headers=headers)
-        if response.status_code == 200:
-            data = response.json()
+        headers = {'Content-Type': 'application/json', 'api-key': email_sender_api_key}
+        response = http.request(
+            'POST',
+            email_sender_url,
+            body=json.dumps(body),
+            headers=headers
+        )
+        if response.status == 200:
+            data = json.loads(response.data.decode('utf-8'))
             return JsonResponse(data)
         else:
             attempt_num += 1
