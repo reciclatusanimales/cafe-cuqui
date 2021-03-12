@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .forms import ContactForm
 from .utils import api_response
-import requests
 import time
 import json
 from .constants import contact_template_slug, newsletter_template_slug, email_sender_url, email_sender_api_key
