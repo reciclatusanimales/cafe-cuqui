@@ -417,19 +417,18 @@ textarea.form-control {
   position: relative;
   overflow: hidden;
 }
-
+/* 
 .wave-top:before,
 .wave-top:after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  top: 25px; /*h/2*/
-  height: 50px; /*h*/
+  top: 25px; 
+  height: 50px; 
   background: radial-gradient(closest-side, #fff, #fff 50%, transparent 50%);
-  /*or farthest-side*/
-  background-size: 50px 50px; /*h h*/
-  background-position: 0 25px; /*0 h/2*/
+  background-size: 50px 50px; 
+  background-position: 0 25px; 
   background-repeat: repeat-x;
   transform: rotate(180deg);  
 }
@@ -441,13 +440,12 @@ textarea.form-control {
     transparent 50%,
     #fff 50%
   );
-  /*or farthest-side*/
-  background-size: 50px 50px; /*h h*/
-  background-position: 25px -25px; /*h/2 -h/2*/
+  background-size: 50px 50px; 
+  background-position: 25px -25px; 
   background-repeat: repeat-x;
   top: -25px;
   transform: rotate(180deg);  
-}
+} */
 
 
 
@@ -1128,7 +1126,7 @@ textarea.form-control {
 
 @media (min-width: 768px) {
   .cover_1 .heading {
-    font-size: 60px;
+    font-size: 50px;
     line-height: 1.5;
   }
 }

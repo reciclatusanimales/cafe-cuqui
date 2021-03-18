@@ -45,8 +45,8 @@
             <li class="active"><a href="{% url 'home:home' %}">Inicio</a></li>
             <li><a href="{% url 'about:about' %}">Nosotros</a></li>
             <li><a href="{% url 'meals:meals' %}">Nuestros Platos</a></li>
-            <!-- <li><a href="{% url 'blog:posts' %}">Our Blog</a></li>
-            <li><a href="{% url 'reservation:reserve_table' %}">Reservas</a></li> -->
+            <!-- <li><a href="{% url 'blog:posts' %}">Our Blog</a></li> -->
+            <li><a href="{% url 'reservation:reserve_table' %}">Reservas</a></li>
             <li><a href="{% url 'contact:contact' %}">Contacto</a></li>
           </ul>
         </div>
@@ -78,14 +78,14 @@
 
         <div class="site-footer">
           <div class="container">
-            <div class="row small-gutters mb-2">
-              <div class="col-md-6 col-lg-4 mb-2" data-aos="fade" data-aos-delay="100">
+            <div class="row small-gutters">
+              <div class="col-md-6 col-lg-4" data-aos="fade" data-aos-delay="100">
                 <div class="footer-widget">
                   <h3>Diner Restaurant</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel neque, odio illum.</p>
+                  <p>Te espero con un café, y si vienes trae contigo tu vida entera. Es que hay tanto de que hablar.</p>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-4 mb-2" data-aos="fade" data-aos-delay="200">
+              <div class="col-md-6 col-lg-4" data-aos="fade" data-aos-delay="200">
                 <div class="footer-widget">
                   <h3>Desayuno</h3>
                   <p>08:00am - 11:00am</p>
@@ -96,12 +96,12 @@
                 </div>
               </div>
 
-              <div class="col-md-12 col-lg-4 mb-2" data-aos="fade" data-aos-delay="400">
+              <div class="col-md-12 col-lg-4" data-aos="fade" data-aos-delay="400">
                 <div class="footer-widget footer-contact-widget">
 
                   <h3>Suscríbete</h3>
                   <p>Recibe noticias, eventos y novedades cuquis.</p>
-                  <form novalidate class="form-subscribe mb-2">
+                  <form novalidate class="form-subscribe">
                     <div class="form-group form-field">
                       <input type="submit" id="newsletter_btn" value="Enviar" class="btn btn-primary">
                       <input type="text" id="newsletter_email" name="newsletter_email" class="form-control" placeholder="Email">
