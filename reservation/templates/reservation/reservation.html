@@ -6,7 +6,7 @@
 
 {% block body %}
       
-<div class="main-wrap">
+<div class="reservation-wrap">
   <div class="cover_1 cover_sm">
     <div class="img_bg" style="background-image: url({% static 'site_static/img/background.jpg' %});" data-stellar-background-ratio="0.5">
       <div class="container">
@@ -91,11 +91,11 @@
           </form>
           {% endcomment %}
 
-          <form method="POST">
+          <form novalidate>
             {% csrf_token %}
             {{ form | crispy }}
 
-            <button class="btn btn-primary" type="submit">Reservar</button>
+            <button class="btn btn-primary reservation-submit" id="send">Reservar</button>
           </form>
           
         </div>
@@ -103,11 +103,135 @@
     </div>
   </div> <!-- .section -->
 
-  <div class="map-wrap" id="map"  data-aos="fade"></div>
-
-
-
+  <div class="map-wrap" id="map" data-aos="fade">
+      <iframe class="map-frame" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Calle%20Lanuza%2032,%20M%C3%A1laga+(Hemiola)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>    
+  </div>
 
 </div>
       
 {% endblock body %}
+
+
+{% block extra_scripts %}
+
+<script>
+	
+	(function() {
+
+    const send_email_url = "{% url 'reservation:reserve' %}"
+    const send_btn = document.getElementById("send");
+
+    send_btn.addEventListener("click", function(event) {
+      console.log('OK')
+      event.preventDefault()
+
+      // TODO: spinner
+			
+      const name_input = document.getElementById("id_name")
+      const name = name_input.value
+      const labelName = document.querySelector("label[for=id_name]");
+
+      const email_input = document.getElementById("id_email")
+      const email = email_input.value
+      const labelEmail = document.querySelector("label[for=id_email]");
+
+      const phone_input = document.getElementById("id_phone")
+      const phone = phone_input.value
+      const labelPhone = document.querySelector("label[for=id_phone]");
+
+      const number_of_persons_input = document.getElementById("id_number_of_persons")
+      const number_of_persons = number_of_persons_input.value
+      const labelNumberOfPersons = document.querySelector("label[for=id_number_of_persons]");
+
+      const date_input = document.getElementById("id_date")
+      const date = date_input.value
+      const labelDate = document.querySelector("label[for=id_date]");
+
+      const time_input = document.getElementById("id_time")
+      const time = time_input.value
+      const labelTime = document.querySelector("label[for=id_time]");
+
+      let error = false;
+      
+
+      if(name === ""){
+        labelName.classList.add("text-error");
+        error = true;
+      }else{
+        labelName.classList.remove("text-error");
+      }
+      if(email === ""){
+        labelEmail.classList.add("text-error");
+        error = true;
+      }else{
+        labelEmail.classList.remove("text-error");
+      }
+      if(phone === ""){
+        labelPhone.classList.add("text-error"); 
+        error = true;       
+      }else{
+        labelPhone.classList.remove("text-error");
+      }
+      if(number_of_persons === ""){
+        labelNumberOfPersons.classList.add("text-error");
+        error = true;
+      }else{
+        labelNumberOfPersons.classList.remove("text-error");
+      }
+      if(date === ""){
+        labelDate.classList.add("text-error");
+        error = true;
+      }else{
+        labelDate.classList.remove("text-error");
+      }
+      if(time === ""){
+        labelTime.classList.add("text-error");
+        error = true;
+      }else{
+        labelTime.classList.remove("text-error");
+      }
+
+      if(!error){
+        fetch(send_email_url, {
+          credentials: 'include',
+          method: 'POST',
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name, 
+            email,
+            phone,
+            number_of_persons,
+            date,
+            time
+          })
+        }).then(
+          response => response.json()
+        ).then(function(data) {
+          if(data.success){
+            console.log("OK")
+            name_input.value = ""
+            email_input.value = ""
+            phone_input.value = ""
+            number_of_persons_input.value = ""
+            date_input.value = ""
+            time_input.value = ""
+
+            // TODO: success message
+          }else{
+            console.log("NOTOK")
+            // TODO: success message
+          }          
+        })      
+      }
+
+		})
+
+  })()
+	
+</script>
+
+{% endblock extra_scripts %}
