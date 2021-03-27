@@ -61,9 +61,9 @@
       <div class="image-bg-fullwidth" style="background-image: url({% static 'site_static/img/img_1.jpg' %});"></div>
       <div class="half d-block d-lg-flex">
         <div class="text">
-          <h2 class="mb-4">Feature Menu</h2>
-          <p class="mb-4 half-text">Aquí nos preocupa la calidad ante todo. Desde el concepto inicial, hasta el producto terminado. Nuestra atención al detalle no tiene comparación. Aquí, en Café Cuqui te lleva a la mesa el mejor café que puedas llegar a imaginar.</p>
-          <p><a href="#" class="btn btn-primary btn-outline-primary">View All Menu</a></p>
+          <h2 class="mb-4">El Medio Menú</h2>
+          <p class="mb-4 half-text">Aquí nos preocupa la calidad ante todo. Desde el concepto inicial, hasta el producto terminado. Nuestra atención al detalle no tiene comparación. Café Cuqui siempre te lleva a la mesa el mejor café que puedas llegar a imaginar.</p>
+          <p><a href="{% url 'meals:meals' %}" class="btn btn-primary btn-outline-primary">View All Menu</a></p>
         </div>
         <div class="image" style="background-image: url({% static 'site_static/img/img_2.jpg' %});"></div>
       </div>
@@ -71,9 +71,9 @@
     <div class="block-half"  data-aos="fade">
       <div class="half d-block d-lg-flex">
         <div class="text">
-          <h2 class="mb-4">Master Chef</h2>
+          <h2 class="mb-4">Nosotros</h2>
           <p class="mb-4 half-text">No basta tener los mejores granos, sino que también baristas experimentados para sacarle el mejor provecho. En Café Cuqui te servimos el café de la manera más entretenida para que puedas empezar el día de la mejor manera.</p>
-          <p><a href="#" class="btn btn-primary btn-outline-primary">Meet Our chef</a></p>
+          <p><a href="{% url 'about:about' %}" class="btn btn-primary btn-outline-primary">Conócenos</a></p>
         </div>
         <div class="image" style="background-image: url({% static 'site_static/img/chef_1.jpg' %});"></div>
       </div>

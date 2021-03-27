@@ -13,7 +13,7 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7" data-aos="fade-up">
             <h2 class="heading">Contacto</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo saepe dolorum dolorem.</p>
+            <p class="lead">El café es un bálsamo para el corazón y el espíritu.</p>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
       <div class="row justify-content-center mb-5">
         <div class="col-md-8  text-center">
           <h2 class="mb-3">Escríbenos</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p class="lead">Cuéntanos lo que piensas de nosotros, del café o de lo que tú quieras.</p>
         </div>
       </div>
       <div class="row justify-content-center">
@@ -36,7 +36,9 @@
 
             {{ form | crispy }}
 
-            <button id="send" class="btn btn-primary">Enviar</button>
+            <div class="contact-message" id="message">☕ Tu mensaje ha sido enviado, muy pronto te responderemos.</div>
+
+            <button id="send" class="btn btn-primary contact-btn">Enviar</button>
 
           </form>
         </div>
@@ -62,7 +64,7 @@
     send_btn.addEventListener("click", function(event) {
       event.preventDefault()
 
-      // TODO: spinner
+      document.getElementById("message").style.visibility = "hidden";
 			
       const name_input = document.getElementById("id_name")
       const name = name_input.value
@@ -115,13 +117,12 @@
           response => response.json()
         ).then(function(data) {
           if(data.success){
-            console.log("OK")
             name_input.value = ""
             email_input.value = ""
             subject_input.value = ""
             content_input.value = ""
 
-            // TODO: success message
+            document.getElementById("message").style.visibility = "visible";
           }else{
             console.log("NOTOK")
             // TODO: success message

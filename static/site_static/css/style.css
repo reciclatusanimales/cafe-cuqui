@@ -548,12 +548,32 @@ textarea.form-control {
 }
 
 .footer-contact-widget .contact-email {
-  color: #fdb44b;
+  color: #ffffff;
 }
 
 .footer-contact-widget .contact-phone {
   font-size: 30px;
   color: #333333;
+}
+
+.contact-btn{
+  float: right;
+}
+
+.contact-message {
+  visibility: hidden;
+  color: #32D190;
+  margin: 30px;
+  font-size: 14px;
+  text-align: right;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (min-width: 576px) {
+  .contact-message {
+    font-size: 20px;
+  }
 }
 
 .lead {
