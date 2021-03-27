@@ -102,7 +102,8 @@
                   <h3>Suscríbete</h3>
                   <p>Recibe noticias, eventos y novedades cuquis.</p>
                   <form novalidate class="form-subscribe">
-                    <div class="form-group form-field">
+                    <div class="newsletter-message" id="newsletter-message">☕ Gracias por suscribirte.</div>
+                    <div class="form-group form-field newsletter-inputs">
                       <input type="submit" id="newsletter_btn" value="Enviar" class="btn btn-primary">
                       <input type="text" id="newsletter_email" name="newsletter_email" class="form-control" placeholder="Email">
                     </div>
@@ -201,10 +202,10 @@
                     response => response.json()
                 ).then(function(data) {
                     if(data.success){
-                        console.log("OK")
                         email_input.value = ""
-
-                        // TODO: success message
+                      
+                        document.getElementById("newsletter-inputs").style.display = "none";
+                        document.getElementById("message").style.display = "block";
                     }else{
                         console.log("NOTOK")
                         // TODO: success message

@@ -95,6 +95,8 @@
             {% csrf_token %}
             {{ form | crispy }}
 
+            <div class="reservation-message" id="message">☕ Tu reserva ha sido realizada, revisa tu correo.</div>
+
             <button class="btn btn-primary reservation-submit" id="send">Reservar</button>
           </form>
           
@@ -121,11 +123,10 @@
     const send_email_url = "{% url 'reservation:reserve' %}"
     const send_btn = document.getElementById("send");
 
-    send_btn.addEventListener("click", function(event) {
-      console.log('OK')
+    send_btn.addEventListener("click", function(event) {      
       event.preventDefault()
 
-      // TODO: spinner
+      document.getElementById("message").style.visibility = "hidden";
 			
       const name_input = document.getElementById("id_name")
       const name = name_input.value
@@ -220,7 +221,7 @@
             date_input.value = ""
             time_input.value = ""
 
-            // TODO: success message
+            document.getElementById("message").style.visibility = "visible";
           }else{
             console.log("NOTOK")
             // TODO: success message
