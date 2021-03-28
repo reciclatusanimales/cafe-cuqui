@@ -423,6 +423,64 @@ textarea.form-control {
   position: relative;
   overflow: hidden;
 }
+
+.newsletter-message {
+	visibility: hidden;
+	margin-top: 20px;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;  
+	margin-bottom: 10px;
+}
+
+.newsletter-error-message, .newsletter-success-message {
+	display: none;
+}
+
+
+.btn-spinner {
+	display: none;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-top-color: #ffffff;
+	border-left-color: #ffffff;
+	animation: spinner 400ms linear infinite;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 50%;  
+	box-sizing: border-box;	
+	vertical-align: middle;
+	z-index: 100;
+}
+
+.newsletter-spinner {
+	display: none;
+	position: relative;  
+  left: 50%; 
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-top: 20px;
+	border-top-color: #ffffff;
+	border-left-color: #ffffff;
+	animation: spinner 400ms linear infinite;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 50%;  
+	box-sizing: border-box;	
+	text-align: center;
+	z-index: 100;
+}
+
+@keyframes spinner {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
 /* 
 .wave-top:before,
 .wave-top:after {
@@ -463,6 +521,12 @@ textarea.form-control {
 }
 
 .site-footer .footer-widget h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.site-footer .footer-widget a {
   color: #fff;
   font-size: 18px;
   margin-bottom: 20px;
@@ -563,10 +627,12 @@ textarea.form-control {
 }
 
 .contact-btn{
+  width: 102px;
+  height: 45px;
   float: right;
 }
 
-.contact-message, .reservation-message {
+.reservation-message {
   visibility: hidden;
   color: #32D190;
   margin: 30px;
@@ -576,19 +642,28 @@ textarea.form-control {
   text-transform: uppercase;  
 }
 
-.newsletter-message {
-  display: none;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;  
-  margin-bottom: 10px;
-}
-
 @media (min-width: 576px) {
   .contact-message, .reservation-message {
-    font-size: 20px;
+    font-size: 18px;
   }
+}
+
+.contact-message {
+	visibility: hidden;	
+	font-size: 14px;
+	text-align: right;
+	margin-bottom: 20px;
+	font-weight: 700;
+	text-transform: uppercase;  
+}
+
+.error-message {
+	color: red;
+}
+
+.success-message {
+	color: #32D190;
+	display: none;
 }
 
 .lead {
@@ -1134,6 +1209,8 @@ textarea.form-control {
 
 .reservation-submit {
   margin-top: 20px;
+  width: 126px;
+  height: 45px;
   float: right;  
 }
 

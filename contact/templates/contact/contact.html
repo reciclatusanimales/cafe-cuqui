@@ -36,9 +36,14 @@
 
             {{ form | crispy }}
 
-            <div class="contact-message" id="message">☕ Tu mensaje ha sido enviado, muy pronto te responderemos.</div>
-
-            <button id="send" class="btn btn-primary contact-btn">Enviar</button>
+            <div class="contact-message" id="message">
+              <span id="success-message" class="success-message">☕ Tu mensaje ha sido enviado, muy pronto te responderemos.</span>
+              <span id="error-message" class="error-message">🔥 Se produjo un error, vuelve a intentarlo por favor.</span>                                  
+            </div>
+            <button id="send" class="btn btn-primary contact-btn">
+              <span class="btn-spinner" id="btn-spinner"></span>
+              <span id="btn-text">Enviar</span>
+            </button>
 
           </form>
         </div>
@@ -65,6 +70,8 @@
       event.preventDefault()
 
       document.getElementById("message").style.visibility = "hidden";
+      document.getElementById("success-message").style.display = "none";
+      document.getElementById("btn-spinner").style.display = "none";
 			
       const name_input = document.getElementById("id_name")
       const name = name_input.value
@@ -99,6 +106,9 @@
       }
 
       if(email && subject && content){
+        document.getElementById("btn-text").style.display = "none";
+        document.getElementById("send").style.pointerEvents = "none";
+        document.getElementById("btn-spinner").style.display = "inline-block";
         fetch(send_email_url, {
           credentials: 'include',
           method: 'POST',
@@ -122,11 +132,16 @@
             subject_input.value = ""
             content_input.value = ""
 
-            document.getElementById("message").style.visibility = "visible";
+            document.getElementById("error-message").style.display = "none";
+            document.getElementById("success-message").style.display = "block";
           }else{
-            console.log("NOTOK")
-            // TODO: success message
+            document.getElementById("error-message").style.display = "block";
+            document.getElementById("success-message").style.display = "none";  
           }          
+          document.getElementById("message").style.visibility = "visible";          
+          document.getElementById("btn-spinner").style.display = "none";
+          document.getElementById("btn-text").style.display = "block"; 
+          document.getElementById("send").style.pointerEvents = "auto";  
         })      
       }
 

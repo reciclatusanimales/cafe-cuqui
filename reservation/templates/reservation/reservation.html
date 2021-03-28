@@ -95,9 +95,14 @@
             {% csrf_token %}
             {{ form | crispy }}
 
-            <div class="reservation-message" id="message">☕ Tu reserva ha sido realizada, revisa tu correo.</div>
-
-            <button class="btn btn-primary reservation-submit" id="send">Reservar</button>
+            <div class="reservation-message" id="message">
+              <span id="success-message" class="success-message">☕ Tu reserva ha sido realizada, revisa tu correo por favor.</span>
+              <span id="error-message" class="error-message">🔥 Se produjo un error, vuelve a intentarlo por favor.</span>                                  
+            </div>
+            <button id="send" class="btn btn-primary reservation-submit">
+              <span class="btn-spinner" id="btn-spinner"></span>
+              <span id="btn-text">Reservar</span>
+            </button>
           </form>
           
         </div>
@@ -127,6 +132,8 @@
       event.preventDefault()
 
       document.getElementById("message").style.visibility = "hidden";
+      document.getElementById("success-message").style.display = "none";
+      document.getElementById("btn-spinner").style.display = "none";
 			
       const name_input = document.getElementById("id_name")
       const name = name_input.value
@@ -193,6 +200,9 @@
       }
 
       if(!error){
+        document.getElementById("btn-spinner").style.display = "inline-block";
+        document.getElementById("btn-text").style.display = "none";
+        document.getElementById("send").style.pointerEvents = "none";
         fetch(send_email_url, {
           credentials: 'include',
           method: 'POST',
@@ -221,11 +231,16 @@
             date_input.value = ""
             time_input.value = ""
 
-            document.getElementById("message").style.visibility = "visible";
+            document.getElementById("error-message").style.display = "none";
+            document.getElementById("success-message").style.display = "block";
           }else{
-            console.log("NOTOK")
-            // TODO: success message
-          }          
+            document.getElementById("error-message").style.display = "block";
+            document.getElementById("success-message").style.display = "none";  
+          }        
+          document.getElementById("message").style.visibility = "visible";          
+          document.getElementById("btn-spinner").style.display = "none";
+          document.getElementById("btn-text").style.display = "block"; 
+          document.getElementById("send").style.pointerEvents = "auto";         
         })      
       }
 
