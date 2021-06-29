@@ -659,11 +659,11 @@ textarea.form-control {
 
 .error-message {
 	color: red;
+  display: none;
 }
 
 .success-message {
-	color: #32D190;
-	display: none;
+	color: #32D190;	
 }
 
 .lead {
